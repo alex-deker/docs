@@ -230,7 +230,7 @@
           "beta": {
             "maximum": 6,
             "minimum": 0,
-            "type": "float",
+            "type": "number",
             "example": 2.5,
             "default": 3
           },
@@ -262,7 +262,7 @@
           "beta": {
             "maximum": 6,
             "minimum": 0,
-            "type": "float",
+            "type": "number",
             "example": 2.5,
             "default": 3
           },
