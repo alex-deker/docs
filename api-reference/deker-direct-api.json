@@ -272,9 +272,11 @@
     },
     "securitySchemes": {
       "deker-demo-auth": {
-        "type": "Bearer <apiKey>",
+        "type": "<apiKey>",
         "name": "Authorization",
+        "scheme": "bearer",
         "in": "header",
+        "bearerFormat": "JWT"
         "description": "Auth Token from Settings & Models page in app. Must be provided as: `Bearer <API Auth Token>`"
       }
     }
