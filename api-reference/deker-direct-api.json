@@ -119,6 +119,25 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/WMOBO"
+              },
+              "examples":{
+                "withoutConfig":{
+                  "summary": "If only using `data` (no `config`):",
+                  "value": {
+                    "beta": 2.5,
+                    "opt_sel": 1,
+                    "data": "[{\"Model Name\":\"Type\",\"Input 1\":\"Input\",\"Input 2\":\"Input\",\"Output 1\":\"Output\",\"Output 2\":\"Output\"},{\"Model Name\":\"Min\",\"Input 1\":0,\"Input 2\":0,\"Output 1\":-1,\"Output 2\":-2},{\"Model Name\":\"Max\",\"Input 1\":10,\"Input 2\":20,\"Output 1\":1,\"Output 2\":2},{\"Model Name\":\"Step\",\"Input 1\":0,\"Input 2\":0,\"Output 1\":0,\"Output 2\":0},{\"Model Name\":\"Weight\",\"Input 1\":1,\"Input 2\":1,\"Output 1\":1,\"Output 2\":-1},{\"Model Name\":\"1\",\"Input 1\":\"1.173\",\"Input 2\":\"8.222\",\"Output 1\":\"0.5\",\"Output 2\":\"1.5\"}]"
+                  }
+                },
+                "withConfig":{
+                  "summary": "If using both `config` and `data`:",
+                  "value": {
+                    "beta": 2.5,
+                    "opt_sel": 1,
+                    "data": "[{\"Model Name\":\"1\",\"Input 1\":\"1.173\",\"Input 2\":\"8.222\",\"Output 1\":\"0.5\",\"Output 2\":\"1.5\"}]",
+                    "config": "'{\"Name\":\"Model Name\",\"Input 1\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 10, \"Step\": 0, \"Weight\": 1}, \"Input 2\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 20, \"Step\": 0, \"Weight\": 1}, \"Output 1\": {\"Type\": \"Output\", \"Min\": -1, \"Max\": 1, \"Step\": 0, \"Weight\": 1}, \"Output 2\": {\"Type\": \"Output\", \"Min\": -2, \"Max\": 2, \"Step\": 0, \"Weight\": -1}}"
+                  }
+                }
               }
             }
           }
@@ -168,7 +187,6 @@
             "maximum": 6,
             "minimum": 0,
             "type": "float",
-            "example": 2.5,
             "default": 3
           },
           "opt_sel": {
@@ -176,20 +194,13 @@
             "maximum": 2,
             "minimum": 1,
             "type": "integer",
-            "example": 1,
             "default": 1
           },
           "data": {
             "type": "string",
-            "description": "Full example for no `config` parameter, then if using `config` parameter. Only the string from the relevant line is needed - they should not be provided as a list.",
-            "example": [
-              "[{\"Model Name\": \"Type\", \"Input 1\": \"Input\", \"Input 2\": \"Input\", \"Output 1\": \"Output\"}, {\"Model Name\": \"Min\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": -1}, {\"Model Name\": \"Max\", \"Input 1\": 10, \"Input 2\": 20, \"Output 1\": 1},{\"Model Name\": \"Step\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": 0}, {\"Model Name\": \"Weight\", \"Input 1\": 1, \"Input 2\": 1, \"Output 1\": 1}, {\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]",
-              "[{\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]"
-            ]
           },
           "config": {
             "type": "string",
-            "example": "'{\"Name\":\"Model Name\",\"Input 1\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 10, \"Step\": 0, \"Weight\": 1}, \"Input 2\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 20, \"Step\": 0, \"Weight\": 1}, \"Output 1\": {\"Type\": \"Output\", \"Min\": -1, \"Max\": 1, \"Step\": 0, \"Weight\": 1}}"
           }
         },
         "description": "Schema for request body format for Single Objective requests",
@@ -207,12 +218,13 @@
             "maximum": 6,
             "minimum": 0,
             "type": "float",
-            "example": 2.5,
             "default": 3
           },
           "data": {
-            "type": "string",
-            "example": "[{\"Model Name\":\"Type\",\"Input 1\":\"Input\",\"Input 2\":\"Input\",\"Output 1\":\"Output\",\"Output 2\":\"Output\"},{\"Model Name\":\"Min\",\"Input 1\":0,\"Input 2\":0,\"Output 1\":-1,\"Output 2\":-2},{\"Model Name\":\"Max\",\"Input 1\":10,\"Input 2\":20,\"Output 1\":1,\"Output 2\":2},{\"Model Name\":\"Step\",\"Input 1\":0,\"Input 2\":0,\"Output 1\":0,\"Output 2\":0},{\"Model Name\":\"Weight\",\"Input 1\":1,\"Input 2\":1,\"Output 1\":1,\"Output 2\":1},{\"Model Name\":\"1\",\"Input 1\":\"1.173\",\"Input 2\":\"8.222\",\"Output 1\":\"0.5\",\"Output 2\":\"1.5\"}]"
+            "type": "string"
+          },
+          "config":{
+            "type": "string"
           }
         },
         "description": "Schema for request body format for Multi Objective requests"
