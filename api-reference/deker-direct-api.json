@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.1.1",
   "info": {
     "title": "Deker Direct API",
     "description": "API for direct use of the deker toolkit",
@@ -160,15 +160,13 @@
             "example": 1,
             "default": 1
           },
-          "data - no config": {
+          "data": {
             "type": "string",
-            "description": "Full example for no `config` parameter",
-            "example": "[{\"Model Name\": \"Type\", \"Input 1\": \"Input\", \"Input 2\": \"Input\", \"Output 1\": \"Output\"}, {\"Model Name\": \"Min\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": -1}, {\"Model Name\": \"Max\", \"Input 1\": 10, \"Input 2\": 20, \"Output 1\": 1},{\"Model Name\": \"Step\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": 0}, {\"Model Name\": \"Weight\", \"Input 1\": 1, \"Input 2\": 1, \"Output 1\": 1}, {\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]"
-          },
-          "data - with config": {
-            "type": "string",
-            "description": "Example if using `config` parameter for table headers",
-            "example": "[{\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]"
+              "description": "Full example for no `config` parameter, then if using `config` parameter",
+            "example": [
+              "[{\"Model Name\": \"Type\", \"Input 1\": \"Input\", \"Input 2\": \"Input\", \"Output 1\": \"Output\"}, {\"Model Name\": \"Min\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": -1}, {\"Model Name\": \"Max\", \"Input 1\": 10, \"Input 2\": 20, \"Output 1\": 1},{\"Model Name\": \"Step\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": 0}, {\"Model Name\": \"Weight\", \"Input 1\": 1, \"Input 2\": 1, \"Output 1\": 1}, {\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]",
+              "[{\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]"
+            ]
           },
           "config": {
             "type": "string",
