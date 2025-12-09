@@ -162,8 +162,8 @@
           },
           "data": {
             "type": "string",
-              "description": "Full example for no `config` parameter, then if using `config` parameter",
-            "example": [
+              "description": "Full example for no `config` parameter, then if using `config` parameter. Only the string from the relevant line is needed - they should not be provided as a list",
+            "examples": [
               "[{\"Model Name\": \"Type\", \"Input 1\": \"Input\", \"Input 2\": \"Input\", \"Output 1\": \"Output\"}, {\"Model Name\": \"Min\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": -1}, {\"Model Name\": \"Max\", \"Input 1\": 10, \"Input 2\": 20, \"Output 1\": 1},{\"Model Name\": \"Step\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": 0}, {\"Model Name\": \"Weight\", \"Input 1\": 1, \"Input 2\": 1, \"Output 1\": 1}, {\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]",
               "[{\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]"
             ]
