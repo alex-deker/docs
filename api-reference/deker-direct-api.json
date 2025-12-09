@@ -319,7 +319,8 @@
       "deker-demo-auth": {
         "type": "apiKey",
         "name": "Authorization",
-        "in": "header"
+        "in": "header",
+        "description": "Auth Token from Settings & Models page in app. Must be provided as: `Bearer \\<API Auth Token\\>`"
       }
     }
   }
