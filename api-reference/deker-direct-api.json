@@ -186,7 +186,7 @@
           "beta": {
             "maximum": 6,
             "minimum": 0,
-            "type": "float",
+            "type": "number",
             "default": 3
           },
           "opt_sel": {
