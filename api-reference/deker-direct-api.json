@@ -246,6 +246,10 @@
             "type": "string",
             "description": "Full example for no `config` parameter"
             "example": "[{\"Model Name\": \"Type\", \"Input 1\": \"Input\", \"Input 2\": \"Input\", \"Output 1\": \"Output\"}, {\"Model Name\": \"Min\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": -1}, {\"Model Name\": \"Max\", \"Input 1\": 10, \"Input 2\": 20, \"Output 1\": 1},{\"Model Name\": \"Step\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": 0}, {\"Model Name\": \"Weight\", \"Input 1\": 1, \"Input 2\": 1, \"Output 1\": 1}, {\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]"
+          },
+          "config": {
+            "type": "string",
+            "example": "'{\"Name\":\"Model Name\",\"Input 1\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 10, \"Step\": 0, \"Weight\": 1}, \"Input 2\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 20, \"Step\": 0, \"Weight\": 1}, \"Output 1\": {\"Type\": \"Output\", \"Min\": -1, \"Max\": 1, \"Step\": 0, \"Weight\": 1}}"
           }
         },
         "description": "Schema for request body format for Single Objective requests",
