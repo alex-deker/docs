@@ -260,11 +260,11 @@
         "type": "object",
         "properties": {
           "beta": {
-            "maximum": 1,
+            "maximum": 6,
             "minimum": 0,
-            "type": "number",
-            "example": 0.2,
-            "default": 0.2
+            "type": "float",
+            "example": 2.5,
+            "default": 3
           },
           "data": {
             "type": "string",
