@@ -77,47 +77,6 @@
             "deker-demo-auth": []
           }
         ]
-      },
-      "options": {
-        "operationId":"SOBOoptions",
-        "summary":"CORS Operations - ignore",
-        "security": [
-          {
-            "deker-demo-auth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Empty"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "description": "Error response"
-          }
-        }
       }
     },
     "/wmobo": {
@@ -172,47 +131,6 @@
             "deker-demo-auth": []
           }
         ]
-      },
-      "options": {
-        "operationId":"WMOBOoptions",
-        "summary":"CORS Operations - ignore",
-        "security": [
-          {
-            "deker-demo-auth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Empty"
-                }
-              }
-            }
-          },
-          "4XX": {
-            "description": "Error response"
-          }
-        }
       }
     }
   },
