@@ -228,21 +228,23 @@
         "type": "object",
         "properties": {
           "beta": {
-            "maximum": 1,
+            "maximum": 6,
             "minimum": 0,
-            "type": "number",
-            "example": 0.2,
-            "default": 0.2
+            "type": "float",
+            "example": 2.5,
+            "default": 3
           },
           "opt_sel": {
             "multipleOf": 1,
-            "maximum": 1,
-            "minimum": 0,
+            "maximum": 2,
+            "minimum": 1,
             "type": "integer",
-            "example": 1
+            "example": 1,
+            "default": 1
           },
           "data": {
             "type": "string",
+            "description": "Full example for no `config` parameter"
             "example": "[{\"Model Name\": \"Type\", \"Input 1\": \"Input\", \"Input 2\": \"Input\", \"Output 1\": \"Output\"}, {\"Model Name\": \"Min\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": -1}, {\"Model Name\": \"Max\", \"Input 1\": 10, \"Input 2\": 20, \"Output 1\": 1},{\"Model Name\": \"Step\", \"Input 1\": 0, \"Input 2\": 0, \"Output 1\": 0}, {\"Model Name\": \"Weight\", \"Input 1\": 1, \"Input 2\": 1, \"Output 1\": 1}, {\"Model Name\": \"1\", \"Input 1\": \"6.239\", \"Input 2\": \"19.446\", \"Output 1\": \"0.3\"}]"
           }
         },
