@@ -264,7 +264,7 @@
     },
     "securitySchemes": {
       "deker-demo-auth": {
-        "type": "<apiKey>",
+        "type": "http",
         "name": "Authorization",
         "scheme": "bearer",
         "in": "header",
