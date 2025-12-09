@@ -225,25 +225,6 @@
             "Input 2": 19.446
           }
         }
-      },
-      "inline_response_200_1": {
-        "type": "object",
-        "properties": {
-          "Input 1": {
-            "type": "number",
-            "example": 3.87
-          },
-          "Input 2": {
-            "type": "number",
-            "example": 20
-          }
-        },
-        "x-examples": {
-          "Example 1": {
-            "Input 1": 10,
-            "Input 2": 20
-          }
-        }
       }
     },
     "securitySchemes": {
