@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "https://bbyp8wyza0.execute-api.ap-southeast-2.amazonaws.com/deker-direct",
+      "url": "https://bbyp8wyza0.execute-api.ap-southeast-2.amazonaws.com/{basePath}",
       "variables": {
         "basePath": {
           "default": "deker-direct"
@@ -81,32 +81,16 @@
               }
             }
           },
-          "4XX": {
+          "500": {
             "description": "Error response"
           }
-        },
-        "security": [
-          {
-            "deker-demo-auth": []
-          }
-        ]
+        }
       }
     },
     "/wmobo": {
       "post": {
-        "summary": "Generate the next set of candidates for a Weighted Mutli-Objective model",
+        "summary": "Generate the next set of candidates for a Weighted Multi-Objective model",
         "operationId":"WMOBO",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Auth Token from Settings & Models page in app. Must be provided as: \"Bearer \\<API Auth Token\\>\"",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "description": "Two values are required for the request body, with an optional third:\r\n\r\n1. `beta`: value balancing exploration (3-5) and exploitation of known good areas (0). Recommend 3\r\n2. `data`: string of an array of JSON objects defining the model table, including headers. The direction of the optimisation is defined in the Weight field.\r\n3. `config` [Optional]: Model table headers as JSON. If `config` is used, `data` contains only the data rows without headers, following the same format as described below.\r\n\r\n**`data` detailed definition:**\r\n\r\nWhen not using the `config` parameter to handle the model headers, the data field contains a full table, defined row by row, with two sections: the headers, defining the model, and the previous trials data. Both the headers and the previous trials data are provided to the API call as a single string.\r\n\r\nThe table column names are used as the keys to define each row as a JSON object. These JSON objects are then inserted into an array, and the array is converted to a string. This can be achieved in python by converting a Pandas DataFrame to a JSON using record-wise orientation, i.e., `df.to_json(orient='records')`.\r\n\r\nThe columns names are: Model Name, Input 1, Input 2, ... , Input N, Output 1, Output 2, ... , Output N\r\nThe header rows, in order, are: Type, Min, Max, Step, Weight\r\n\r\nEvery cell within the table must have a value. For Min, Max, and Step, the default value should be 0. For Weight, the default value should be 1. For the Type fields, the values must be \"Input\", \"Output\" or \"Output Constraint\".\r\n\r\n*Weight field definition:*\r\nThe Weight field is used to define two model parameters:\r\n1. The relative importance of each Output to achieving the optimisation objective (relative magnitude)\r\n2. The direction of the optimisation (sign)\r\n\r\nThe relative magnitude compares and scales the contribution of each Output based on the absolute value of the Weight field. For example, if there are two Outputs with Weights of -3 and 6:\r\n- Output 2 is considered to be twice as important as Output 1, as 6/3 = 2. Weights of 1 and -2, 5 and 10, or -4 and -8 would produce the same results.\r\n- For this example, Output 1 is to be minimised, as it is a negative value. Output 2 is to be maximised, as it is a positive value.\r\n\r\nDouble quotation marks (\\\") should be used within the `data` string, escaped (\\\\\\\") to ensure correct processing in the API. Previous trial data values should be provided as strings, as shown in the example (although providing them as numbers may work fine).\r\n\r\nThe table below converts into the string shown in the Example section. There are the column titles, followed by 5 rows of headers, followed by a single row of previous trial data. There are two inputs and two outputs for this particular example model.\r\n\r\n\r\nModel Name | Input 1 | Input 2 | Output 1 | Output 2\r\n---------|----------|---------|---------|---------\r\nType   | Input | Input | Output | Output\r\nMin    | 0 | 0 | -1 | -2\r\nMax    | 10 | 20 | 1 | 2\r\nStep   | 0 | 0 | 0 | 0\r\nWeight | 1 | 1 | 6 | -3\r\n1 | 1.173 | 8.222 | 0.5 | 1.5",
           "content": {
@@ -119,7 +103,6 @@
                   "summary": "If only using `data` (no `config`):",
                   "value": {
                     "beta": 2.5,
-                    "opt_sel": 1,
                     "data": "[{\"Model Name\":\"Type\",\"Input 1\":\"Input\",\"Input 2\":\"Input\",\"Output 1\":\"Output\",\"Output 2\":\"Output\"},{\"Model Name\":\"Min\",\"Input 1\":0,\"Input 2\":0,\"Output 1\":-1,\"Output 2\":-2},{\"Model Name\":\"Max\",\"Input 1\":10,\"Input 2\":20,\"Output 1\":1,\"Output 2\":2},{\"Model Name\":\"Step\",\"Input 1\":0,\"Input 2\":0,\"Output 1\":0,\"Output 2\":0},{\"Model Name\":\"Weight\",\"Input 1\":1,\"Input 2\":1,\"Output 1\":1,\"Output 2\":-1},{\"Model Name\":\"1\",\"Input 1\":\"1.173\",\"Input 2\":\"8.222\",\"Output 1\":\"0.5\",\"Output 2\":\"1.5\"}]"
                   }
                 },
@@ -127,14 +110,14 @@
                   "summary": "If using both `config` and `data`:",
                   "value": {
                     "beta": 2.5,
-                    "opt_sel": 1,
                     "data": "[{\"Model Name\":\"1\",\"Input 1\":\"1.173\",\"Input 2\":\"8.222\",\"Output 1\":\"0.5\",\"Output 2\":\"1.5\"}]",
                     "config": "'{\"Name\":\"Model Name\",\"Input 1\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 10, \"Step\": 0, \"Weight\": 1}, \"Input 2\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 20, \"Step\": 0, \"Weight\": 1}, \"Output 1\": {\"Type\": \"Output\", \"Min\": -1, \"Max\": 1, \"Step\": 0, \"Weight\": 1}, \"Output 2\": {\"Type\": \"Output\", \"Min\": -2, \"Max\": 2, \"Step\": 0, \"Weight\": -1}}"
                   }
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -154,7 +137,7 @@
               }
             }
           },
-          "4XX": {
+          "500": {
             "description": "Error response"
           }
         },
@@ -191,15 +174,14 @@
             "default": 1
           },
           "data": {
-            "type": "string",
+            "type": "string"
           },
           "config": {
             "type": "string",
             "example": "'{\"Name\":\"Model Name\",\"Input 1\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 10, \"Step\": 0, \"Weight\": 1}, \"Input 2\": {\"Type\": \"Input\", \"Min\": 0, \"Max\": 20, \"Step\": 0, \"Weight\": 1}, \"Output 1\": {\"Type\": \"Output\", \"Min\": -1, \"Max\": 1, \"Step\": 0, \"Weight\": 1}, \"Output 2\": {\"Type\": \"Output\", \"Min\": -2, \"Max\": 2, \"Step\": 0, \"Weight\": -1}}"
           }
         },
-        "description": "Schema for request body format for Single Objective requests",
-        "nullable": true
+        "description": "Schema for request body format for Single Objective requests"
       },
       "WMOBO": {
         "title": "WMOBO",
@@ -267,8 +249,8 @@
     "securitySchemes": {
       "deker-demo-auth": {
         "type": "http",
-        "name": "Authorization",
         "scheme": "bearer",
+        "bearerFormat": "JWT",
         "description": "Auth Token from Settings & Models page in app. Must be provided as: `Bearer <API Auth Token>`"
       }
     }
