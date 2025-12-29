@@ -187,7 +187,7 @@
           "explore_mode": {
             "type": "boolean",
             "default": true,
-            "description": "Enable or disable exploration mode for the current iteration of the given deker model. Exploration mode forces suggested candidates to be more than 1% different in all input parameter values than any previous data points, based on normalised input data values. Exploration mode is highly valuable when first exploring an unknown problem. Disabling allows improved optimisation around the best value found so far, although other points may still be suggested."
+            "description": "Enable or disable exploration mode for the current iteration of the given deker model. Exploration mode forces suggested candidates to be more than 1% different in all input parameter values than any previous data points, based on normalised input data values. Exploration mode is highly valuable when first exploring an unknown problem. Disabling allows improved optimisation around the best value found so far, although other points may still be suggested. Exploration mode can be switched on and off with each iteration as needed."
           }
         },
         "description": "Schema for request body format for Single Objective requests"
@@ -216,7 +216,7 @@
           "explore_mode": {
             "type": "boolean",
             "default": true,
-            "description": "Enable or disable exploration mode for the current iteration of the given deker model. Exploration mode forces suggested candidates to be more than 1% different in all input parameter values than any previous data points, based on normalised input data values. Exploration mode is highly valuable when first exploring an unknown problem. Disabling allows improved optimisation around the best value found so far, although other points may still be suggested."
+            "description": "Enable or disable exploration mode for the current iteration of the given deker model. Exploration mode forces suggested candidates to be more than 1% different in all input parameter values than any previous data points, based on normalised input data values. Exploration mode is highly valuable when first exploring an unknown problem. Disabling allows improved optimisation around the best value found so far, although other points may still be suggested. Exploration mode can be switched on and off with each iteration as needed."
           }
         },
         "description": "Schema for request body format for Multi Objective requests"
