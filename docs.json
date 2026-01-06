@@ -11,7 +11,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "API reference",
+        "tab": "API Reference",
         "groups": [
           {
           "group": "deker Direct API",
@@ -19,6 +19,17 @@
             "source": "api-reference/deker-direct-api.json",
             "directory": "api-reference"
           }
+          }
+        ]
+      },
+      {
+        "tab": "User Guide",
+        "groups": [
+          {
+            "group": "Getting Started Guides"
+          },
+          {
+            "group": "Support"
           }
         ]
       }
